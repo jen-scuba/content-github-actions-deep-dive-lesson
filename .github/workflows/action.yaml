@@ -1,4 +1,4 @@
-name: Deploy my Lambda Funtion
+name: Deploy my Lambda Function
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
       
 jobs:
   build:
-    runs-on: unbuntu-lastest
+    runs-on: unbuntu-latest
     steps:
       - name: check out code
         uses: actions/checkout@v2
@@ -18,14 +18,14 @@ jobs:
       - name: Install libraries
         run: |
             cd function
-            python -m pip install -upgrade pip
+            python -m pip install --upgrade pip
             if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - name: Create zip bundle
         run: |
             cd function
             zip -r ../${{ github.sha }}.zip .
       - name: Archive artifact
-        uses: actions/ipload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
-          name: zipper-bundle
+          name: zippe-bundle
           path: ${{ github.sha }}.zip
