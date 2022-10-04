@@ -62,6 +62,6 @@ jobs:
             aws lamda update-function-code \
             --function-name my-function \
             --s3-bucket my-bucket-jkue20221004 \
-            --s3-key ${{gihub.sha }}.zip \
+            --s3-key ${{github.sha }}.zip \
             --publish
         
